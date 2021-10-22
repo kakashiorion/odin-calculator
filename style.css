@@ -1,0 +1,121 @@
+body {
+  margin: 0px;
+  white-space: nowrap;
+  height: 100vh;
+  width: 100%;
+}
+
+#inputPad {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  /* grid-template-rows: repeat(3, auto); */
+  height: 60vh;
+  width: 100%;
+  gap: 2px;
+  background-color: lightgray;
+  box-sizing: border-box;
+}
+
+#operationDisplay,
+#inputDisplay {
+  height: 20vh;
+  width: 100%;
+  align-items: center;
+  justify-content: right;
+  display: flex;
+  box-sizing: border-box;
+  padding-right: 5vh;
+  font-size: 5vh;
+}
+
+#inputDisplay {
+  font-size: 10vh;
+  font-weight: 600;
+}
+
+.inputButton {
+  border: 1px solid lightgray;
+  border-radius: 0px;
+  background-color: #fefefe;
+  text-align: center;
+  box-sizing: border-box;
+  font-size: 5vh;
+}
+
+.inputButton:hover {
+  background-color: #f0f0f0;
+}
+
+.operator {
+  background-color: rgb(249, 250, 210);
+}
+
+.operator:hover {
+  background-color: rgb(228, 236, 171);
+}
+
+.modify {
+  background-color: rgb(195, 236, 212);
+}
+
+.modify:hover {
+  background-color: rgb(160, 212, 186);
+}
+
+.inputButton:active {
+  background-color: lightblue;
+}
+
+@media (max-aspect-ratio: 3/3) {
+  #inputPad {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  /** Rearrange buttons */
+  #number3 {
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 2;
+    grid-row-end: 3;
+  }
+
+  #number4 {
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 2;
+    grid-row-end: 3;
+  }
+
+  #number7 {
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 4;
+    grid-row-end: 5;
+  }
+
+  #number8 {
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 4;
+    grid-row-end: 5;
+  }
+
+  #decimal {
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 6;
+    grid-row-end: 7;
+  }
+
+  #equal {
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 6;
+    grid-row-end: 7;
+  }
+
+  #clearAll {
+    grid-column-start: 3;
+    grid-column-end: 4;
+  }
+}
