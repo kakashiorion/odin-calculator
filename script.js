@@ -124,22 +124,26 @@ clearAllButton.addEventListener("click", function () {
 });
 
 addButton.addEventListener("click", function () {
-  operate("+");
+  operateSymbol("+");
 });
 
 subtractButton.addEventListener("click", function () {
-  operate("-");
+  operateSymbol("-");
 });
 
 multiplyButton.addEventListener("click", function () {
-  operate("*");
+  operateSymbol("*");
 });
 
 divideButton.addEventListener("click", function () {
-  operate("/");
+  operateSymbol("/");
 });
 
-function operate(newOperator) {
+equalButton.addEventListener("click", function () {
+  operateEqual();
+});
+
+function operateSymbol(newOperator) {
   if (inputDisplay.innerHTML == "") {
     if (operationDisplay.innerHTML == "") {
       operationDisplay.innerHTML = "0 " + newOperator;
@@ -174,7 +178,7 @@ function operate(newOperator) {
   }
 }
 
-equalButton.addEventListener("click", function () {
+function operateEqual() {
   if (inputDisplay.innerHTML != "") {
     if (operationDisplay.innerHTML != "") {
       var n1 = Number(
@@ -196,4 +200,65 @@ equalButton.addEventListener("click", function () {
     }
     inputDisplay.innerHTML = clearAll();
   }
-});
+}
+
+/** Keyboard support */
+document.addEventListener("keydown", logKey);
+
+function inputNumber(number) {
+  inputDisplay.innerHTML = addDigit(inputDisplay.innerHTML, number);
+}
+
+function logKey(e) {
+  if (e.code == "Digit1" || e.code == "Numpad1") {
+    inputNumber(1);
+  }
+  if (e.code == "Digit2" || e.code == "Numpad2") {
+    inputNumber(2);
+  }
+  if (e.code == "Digit3" || e.code == "Numpad3") {
+    inputNumber(3);
+  }
+  if (e.code == "Digit4" || e.code == "Numpad4") {
+    inputNumber(4);
+  }
+  if (e.code == "Digit5" || e.code == "Numpad5") {
+    inputNumber(5);
+  }
+  if (e.code == "Digit6" || e.code == "Numpad6") {
+    inputNumber(6);
+  }
+  if (e.code == "Digit7" || e.code == "Numpad7") {
+    inputNumber(7);
+  }
+  if (e.code == "Digit8" || e.code == "Numpad8") {
+    inputNumber(8);
+  }
+  if (e.code == "Digit9" || e.code == "Numpad9") {
+    inputNumber(9);
+  }
+  if (e.code == "Digit0" || e.code == "Numpad0") {
+    inputNumber(0);
+  }
+  if (e.code == "Period" || e.code == "NumpadDecimal") {
+    inputDisplay.innerHTML = addDecimal(inputDisplay.innerHTML);
+  }
+  if (e.code == "Backspace") {
+    inputDisplay.innerHTML = back(inputDisplay.innerHTML);
+  }
+  if (e.code == "NumpadAdd") {
+    operateSymbol("+");
+  }
+  if (e.code == "Minus" || e.code == "NumpadSubtract") {
+    operateSymbol("-");
+  }
+  if (e.code == "NumpadMultiply") {
+    operateSymbol("*");
+  }
+  if (e.code == "Slash" || e.code == "NumpadDivide") {
+    operateSymbol("/");
+  }
+  if (e.code == "Equal" || e.code == "NumpadEnter" || e.code == "Enter") {
+    operateEqual();
+  }
+}
